@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">MOB NO.</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Images</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in tr %}  
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.age}}</td>
+        <td>{{i.mob_no}}</td>
+        <td>{{i.gender}}</td>
+        <td><a href="..\media\{{i.images}}">{{i.images}}</a></td>
+        <td><button type="submit" class="btn btn-danger"><a href="{% url 'delete' i.id %}">Delete</a></button></td>
+        <td><button type="submit" class="btn btn-success"><a href="{% url 'update' i.id %}">Update</a></button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+    
+{% endblock %}
